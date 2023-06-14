@@ -5,6 +5,10 @@ const rootEndpoint = "/api";
 
 const veiculosEndpoint = `${rootEndpoint}/veiculos`;
 
+
+var hateoasLinker = require('express-hateoas-links');
+app.use(hateoasLinker);
+
 const veiculos = [
     {id:0, placa:"ABC-1234", modelo:"Fusca", marca:"Volkswagen", ano:1970, cor:"Azul", pecas: [
         {id:0, nome:"Motor", marca:"Volkswagen", ano:1970, preco:1000},
