@@ -33,6 +33,11 @@ res.send(veiculos);
 app.get(`${veiculosEndpoint}/:id`, function (req, res) {
     const id = req.params.id;
     const veiculo = veiculos[id];
+    res.status(200).json(veiculo,
+         [
+            { rel: "self", method: "GET", href: 'http://127.0.0.1' },
+            { rel: "create", method: "POST", title: 'Create Veiculo', href: 'http://127.0.0.1/veiculo' }
+        ]).send();
     res.status(200).send(veiculo);
 });
 
@@ -85,8 +90,6 @@ app.post(`${veiculosEndpoint}/:id/pecas`, function (req, res) {
 });
 
 app.post(`${veiculosEndpoint}/:id/abastecer`, function (req, res) {
-    const id = req.params.id;
-    const veiculo = veiculos[id];
     const abastecimento = req.body;
     console.info('abastecimento', abastecimento);
     res.status(201).send(abastecimento);
