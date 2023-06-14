@@ -79,6 +79,14 @@ app.post(`${veiculosEndpoint}/:id/pecas`, function (req, res) {
     veiculo.pecas.push(peca);
     res.status(201).send(peca);
 });
+
+app.post(`${veiculosEndpoint}/:id/abastecer`, function (req, res) {
+    const id = req.params.id;
+    const veiculo = veiculos[id];
+    const abastecimento = req.body;
+    console.info('abastecimento', abastecimento);
+    res.status(201).send(abastecimento);
+});
 var server = app.listen(8081, function () {
     var host = server.address().address
     var port = server.address().port
